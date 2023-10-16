@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Sphere : MonoBehaviour
+public class KreisBewegung : MonoBehaviour
 {
     private Vector3 _v = new(20, 0, 0);
     private readonly Vector3 _center = new(0, 0, 0);

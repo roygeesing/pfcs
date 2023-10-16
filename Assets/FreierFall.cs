@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class FreierFall : MonoBehaviour
 {
     private Vector3 _v = new(0, 0, 0);
     private readonly Vector3 _a = new(0, -9.81f, 0);
