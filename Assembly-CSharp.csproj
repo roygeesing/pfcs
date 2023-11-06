@@ -47,6 +47,8 @@
   <ItemGroup>
      <Compile Include="Assets\KreisBewegung.cs" />
      <Compile Include="Assets\FreierFall.cs" />
+     <Compile Include="Assets\Feder.cs" />
+     <Compile Include="Assets\RutschenderEisblock.cs" />
      <Folder Include="Assets" />
      <Folder Include="Assets\Scenes" />
      <Reference Include="UnityEngine">

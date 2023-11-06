@@ -1,20 +1,33 @@
+using System;
 using UnityEngine;
 
 public class FreierFall : MonoBehaviour
 {
-    private Vector3 _v = new(0, 0, 0);
-    private readonly Vector3 _a = new(0, -9.81f, 0);
-
     private const float RotationSpeed = 20f;
     private readonly Vector3 _rotateUp = new(RotationSpeed, 0, 0);
     private readonly Vector3 _rotateLeft = new(0, 0, RotationSpeed);
+    private readonly Vector3 _gravity = new(0, -9.81f, 0);
+    
+    private const float Mass = 2f;
+    private const float AirDensity = 0.1225f;
+    private const float DragCoefficient = 0.47f;
+    private const float Area = (float)(0.5f * 0.5f * Math.PI);
+    
+    private Vector3 _v = new(0, 0, 0);
 
     public Collider plane;
 
     private void FixedUpdate()
     {
-        transform.position += Time.deltaTime * _v + 0.5f * Time.deltaTime * Time.deltaTime * _a;
-        _v += _a * Time.deltaTime;
+        var weightForce = Mass * _gravity;
+        
+        var velocity = _v.magnitude;
+        var airResistance = 0.5f * DragCoefficient * AirDensity * Area * velocity * velocity;
+        var airResistanceForce = -_v.normalized * airResistance;
+        
+        var acceleration = weightForce + airResistanceForce;
+        transform.position += Time.deltaTime * _v + 0.5f * Time.deltaTime * Time.deltaTime * acceleration;
+        _v += acceleration * Time.deltaTime;
 
         var normal = plane.transform.up;
         var vector = plane.transform.position - transform.position;
