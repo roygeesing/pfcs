@@ -25,15 +25,25 @@ public class RutschenderEisblock : MonoBehaviour
         var weightForce = Mass * _gravity;
         var normal = plane.transform.up;
         var normalForce = -Vector3.Project(weightForce, normal);
-     
-        var friction = _v.magnitude > 0.1 ? DynamicFriction : StaticFriction;   
-        var frictionForce = -_v.normalized * (normalForce.magnitude * friction);
-
+        
         var velocity = _v.magnitude;
         var airResistance = 0.5f * DragCoefficient * AirDensity * Area * velocity * velocity;
         var airResistanceForce = -_v.normalized * airResistance;
 
-        var acceleration = weightForce + normalForce + frictionForce + airResistanceForce;
+        var acceleration = weightForce + normalForce + airResistanceForce;
+        
+        var isMoving = _v.magnitude > 0.001;
+        var friction = isMoving ? DynamicFriction : StaticFriction;   
+        var frictionForce = -_v.normalized * (normalForce.magnitude * friction);
+        
+        if (!isMoving && frictionForce.magnitude > acceleration.magnitude)
+        {
+            acceleration = Vector3.zero;
+        }
+        else
+        {
+            acceleration += frictionForce;
+        }
         
         transform.position += Time.deltaTime * _v + 0.5f * Time.deltaTime * Time.deltaTime * acceleration;
         _v += acceleration * Time.deltaTime;

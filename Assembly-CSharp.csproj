@@ -46,11 +46,21 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\KreisBewegung.cs" />
+     <Compile Include="Assets\Kollision.cs" />
      <Compile Include="Assets\FreierFall.cs" />
+     <Compile Include="Assets\Gravitation.cs" />
      <Compile Include="Assets\Feder.cs" />
      <Compile Include="Assets\RutschenderEisblock.cs" />
      <Folder Include="Assets" />
+     <Folder Include="Assets\SpaceSkies Free\Skybox_1\Textures" />
      <Folder Include="Assets\Scenes" />
+     <Folder Include="Assets\SpaceSkies Free\Skybox_1\Textures\2K_Resolution" />
+     <Folder Include="Assets\SpaceSkies Free" />
+     <Folder Include="Assets\Planet Earth Free" />
+     <Folder Include="Assets\Planet Earth Free\Materials" />
+     <Folder Include="Assets\SpaceSkies Free\Skybox_1" />
+     <Folder Include="Assets\SpaceSkies Free\Skybox_1\Textures\4K_Resolution" />
+     <Folder Include="Assets\SpaceSkies Free\Skybox_1\Textures\1K_Resolution" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.9f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
      </Reference>
